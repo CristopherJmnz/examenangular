@@ -8,12 +8,25 @@ import { routing,appRoutingProvider } from './app.routing';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './components/home/home.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { CubosService } from './services/cubos.service';
+import { CubosComponent } from './components/cubos/cubos.component';
+import { DetallescuboComponent } from './components/detallescubo/detallescubo.component';
+import { LoginComponent } from './components/login/login.component';
+import { RegistroComponent } from './components/registro/registro.component';
+import { PerfilComponent } from './components/perfil/perfil.component';
+import { CompraComponent } from './components/compra/compra.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    MenuComponent
+    MenuComponent,
+    CubosComponent,
+    DetallescuboComponent,
+    LoginComponent,
+    RegistroComponent,
+    PerfilComponent,
+    CompraComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +35,8 @@ import { MenuComponent } from './components/menu/menu.component';
     FormsModule
   ],
   providers: [
-    appRoutingProvider
+    appRoutingProvider,
+    CubosService
   ],
   bootstrap: [AppComponent]
 })

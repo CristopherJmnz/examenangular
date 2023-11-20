@@ -1,0 +1,20 @@
+<form #loginForm="ngForm" (submit)="login()" class="w-50 mx-auto mt-5">
+    <label>Email</label>
+    <input
+      class="form-control"
+      type="text"
+      name="email"
+      id="email"
+      #email
+    />
+    <label>Contraseña</label>
+    <input
+      class="form-control"
+      type="password"
+      name="password"
+      id="password"
+      #password
+    />
+    <button type="submit" class="btn btn-primary mt-3">Iniciar Sesión</button>
+    <a [routerLink]="['/registro']">No tienes una cuenta? Registrate</a>
+  </form>
