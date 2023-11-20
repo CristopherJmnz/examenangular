@@ -8,12 +8,16 @@ import { Usuario } from '../models/usuario';
 export class UsuarioService {
   constructor(private _http: HttpClient) {}
 
-  login(user: Usuario) {
+  login(email:string,password:string):Observable<any> {
+    let user={
+        email:email,
+        password:password
+    }
     let url = environment.urlApi + 'api/manage/login';
-    return this._http.get(url);
+    return this._http.post(url,user);
   }
 
-  getPerfilUser() {
+  getPerfilUser():Observable<any> {
     let url = environment.urlApi + 'api/manage/perfilusuario';
     let token = JSON.parse(localStorage.getItem('token')!);
     let config = {
@@ -22,34 +26,30 @@ export class UsuarioService {
     return this._http.get(url, config);
   }
 
-  getCompras() {
+  getCompras():Observable<any> {
     let url = environment.urlApi + 'api/compra/comprasUsuario';
-    let token = localStorage.getItem('userToken');
+    let token = localStorage.getItem('token');
     if (token) {
-      token = JSON.parse(localStorage.getItem('userToken')!);
+      token = JSON.parse(localStorage.getItem('token')!);
     }
     const header = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${token}`,
     });
-    return this._http.get(url, { headers: header });
+    return this._http.get(url,{ headers: header });
   }
 
-  registroUser(user: Usuario) {
+  registroUser(user: Usuario):Observable<any> {
     let url = environment.urlApi + 'api/manage/registrousuario';
-    return axios.post(url, user).then((result) => {
-      return result.data.response;
-    });
+    return this._http.post(url, user);
   }
 
-  realizarPedido(id: number | string) {
+  realizarPedido(id: number | string):Observable<any> {
     let url = environment.urlApi + 'api/compra/insertarpedido/' + id;
-    let token = JSON.parse(localStorage.getItem('token'));
+    let token = JSON.parse(localStorage.getItem('token')!);
     let config = {
       headers: { Authorization: `Bearer ${token}` },
     };
-    return axios.post(url, '', config).then((response) => {
-      return response.data;
-    });
+    return this._http.post(url, '', config)
   }
 }

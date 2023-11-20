@@ -1,1 +1,14 @@
-<p>perfil works!</p>
+<div class="container" *ngIf="user">
+  <h1>Hola, {{ user.nombre }}</h1>
+  <h2>Detalles</h2>
+  <p>Email: {{ user.email }}</p>
+  <button (click)="historialCompras()" class="btn btn-primary">
+    Ver Historial de Compras
+  </button>
+  <ul>
+    <li *ngFor="let pedido of pedidos">
+      IdPedido: {{ pedido.idPedido }} , Fecha: {{ pedido.fechaPedido }}
+    </li>
+  </ul>
+  <a [routerLink]="['/comprar']" class="btn btn-danger">Realizar compra</a>
+</div>

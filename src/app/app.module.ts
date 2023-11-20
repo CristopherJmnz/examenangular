@@ -15,6 +15,7 @@ import { LoginComponent } from './components/login/login.component';
 import { RegistroComponent } from './components/registro/registro.component';
 import { PerfilComponent } from './components/perfil/perfil.component';
 import { CompraComponent } from './components/compra/compra.component';
+import { UsuarioService } from './services/usuario.service';
 
 @NgModule({
   declarations: [
@@ -36,7 +37,8 @@ import { CompraComponent } from './components/compra/compra.component';
   ],
   providers: [
     appRoutingProvider,
-    CubosService
+    CubosService,
+    UsuarioService
   ],
   bootstrap: [AppComponent]
 })
