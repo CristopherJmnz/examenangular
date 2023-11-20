@@ -1,1 +1,15 @@
-<p>compra works!</p>
+<div class="container">
+  <form
+    #compraForm="ngForm"
+    (submit)="realizarPedido()"
+    class="w-50 mx-auto mt-5"
+  >
+    <label>Cubos</label>
+    <select class="form-control" name="idcubo" id="idcubo" #idcubo>
+      <option *ngFor="let cubo of cubos" value="{{ cubo.idCubo }}">
+        {{ cubo.nombre }}
+      </option>
+    </select>
+    <button type="submit" class="btn btn-primary mt-3">Realizar pedido</button>
+  </form>
+</div>
